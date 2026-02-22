@@ -1,0 +1,108 @@
+name: Build & Release Kōtei Denshi
+
+on:
+  push:
+    tags:
+      - "v*" # Triggers on version tags like v3.5.0, v3.6.0, etc.
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows:
+    name: Build Windows Installer
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # ── Build Go Backend (sidecar binary) ──
+      - name: Build Go backend
+        run: go build -o seanime-denshi/binaries/seanime.exe main.go
+        env:
+          GOOS: windows
+          GOARCH: amd64
+
+      # ── Build Web Frontend ──
+      - name: Install web dependencies
+        working-directory: seanime-web
+        run: npm ci
+
+      - name: Build web frontend
+        working-directory: seanime-web
+        run: npm run build
+
+      - name: Copy web output to Electron
+        run: |
+          if (Test-Path "seanime-denshi\web-denshi") { Remove-Item -Recurse -Force "seanime-denshi\web-denshi" }
+          Copy-Item -Recurse -Force "seanime-web\out" "seanime-denshi\web-denshi"
+
+      # ── Build Electron Desktop App ──
+      - name: Install Electron dependencies
+        working-directory: seanime-denshi
+        run: npm ci
+
+      - name: Build Windows installer
+        working-directory: seanime-denshi
+        run: npm run build:win
+
+      # ── Upload artifacts ──
+      - name: Upload Windows installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-installer
+          path: seanime-denshi/dist/Kotei-Denshi-*_Windows_*.exe
+
+  # ── Create GitHub Release ──
+  release:
+    name: Create GitHub Release
+    needs: [build-windows]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download Windows installer
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-installer
+          path: dist/
+
+      - name: Get version from tag
+        id: version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "Kōtei Denshi ${{ steps.version.outputs.VERSION }}"
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+          body: |
+            ## Kōtei Denshi ${{ steps.version.outputs.VERSION }}
+
+            ### Downloads
+            - **Windows:** Download the `.exe` installer below
+
+            ### Installation
+            1. Download the `.exe` installer from the Assets section below
+            2. Run the installer and follow the prompts
+            3. Launch **Kōtei Denshi** from the Start Menu or Desktop shortcut
+
+            ### Auto-Updates
+            Kōtei Denshi will automatically check for updates from this repository.
+          files: |
+            dist/*.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
