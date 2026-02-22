@@ -60,7 +60,7 @@
       "gatekeeperAssess": false,
       "entitlements": "assets/entitlements.mac.plist",
       "entitlementsInherit": "assets/entitlements.mac.plist",
-      "artifactName": "seanime-denshi-${version}_MacOS_${arch}.${ext}",
+      "artifactName": "Kotei-Denshi-${version}_MacOS_${arch}.${ext}",
       "identity": "-"
     },
     "win": {
@@ -72,7 +72,7 @@
           ]
         }
       ],
-      "artifactName": "seanime-denshi-${version}_Windows_${arch}.${ext}",
+      "artifactName": "Kotei-Denshi-${version}_Windows_${arch}.${ext}",
       "verifyUpdateCodeSignature": false
     },
     "linux": {
@@ -85,7 +85,7 @@
         }
       ],
       "category": "Entertainment",
-      "artifactName": "seanime-denshi-${version}_Linux_${arch}.${ext}"
+      "artifactName": "Kotei-Denshi-${version}_Linux_${arch}.${ext}"
     },
     "nsis": {
       "oneClick": false,
@@ -94,7 +94,7 @@
       "createStartMenuShortcut": true,
       "deleteAppDataOnUninstall": true,
       "shortcutName": "Kōtei Denshi",
-      "artifactName": "seanime-denshi-${version}_Windows_${arch}.${ext}",
+      "artifactName": "Kotei-Denshi-${version}_Windows_${arch}.${ext}",
       "perMachine": true
     },
     "directories": {
