@@ -32,8 +32,6 @@ export function AutoplayCountdownModal({
         switch (streamingType) {
             case "local":
                 return "Local File"
-            case "torrent":
-                return "Torrent Stream"
             case "debrid":
                 return "Debrid Stream"
             default:

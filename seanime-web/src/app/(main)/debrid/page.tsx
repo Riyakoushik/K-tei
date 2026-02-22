@@ -1,5 +1,5 @@
 import { Debrid_TorrentItem } from "@/api/generated/types"
-import { useDebridCancelDownload, useDebridDeleteTorrent, useDebridDownloadTorrent, useDebridGetTorrents } from "@/api/hooks/debrid.hooks"
+import { useDebridCancelDownload, useDebridDeleteStream, useDebridDownloadStream, useDebridGetStreams } from "@/api/hooks/debrid.hooks"
 import { CustomLibraryBanner } from "@/app/(main)/_features/anime-library/_containers/custom-library-banner"
 import { useWebsocketMessageListener } from "@/app/(main)/_hooks/handle-websockets"
 import { useLibraryPathSelection } from "@/app/(main)/_hooks/use-library-path-selection"
@@ -84,10 +84,10 @@ function Content() {
     const [enabled, setEnabled] = React.useState(true)
     const [refetchInterval, setRefetchInterval] = React.useState(30000)
 
-    const { data, isLoading, status, refetch } = useDebridGetTorrents(enabled, refetchInterval)
+    const { data, isLoading, status, refetch } = useDebridGetStreams(enabled, refetchInterval)
 
     React.useEffect(() => {
-        const hasDownloads = data?.filter(t => t.status === "downloading" || t.status === "paused")?.length ?? 0
+        const hasDownloads = data?.filter((t: Debrid_TorrentItem) => t.status === "downloading" || t.status === "paused")?.length ?? 0
         setRefetchInterval(hasDownloads ? 5000 : 30000)
     }, [data])
 
@@ -102,8 +102,8 @@ function Content() {
             <p className="max-w-md">Failed to connect to the Debrid service, verify your settings.</p>
             <Button
                 intent="primary-subtle" onClick={() => {
-                setEnabled(true)
-            }}
+                    setEnabled(true)
+                }}
             >Retry</Button>
         </div>
     </LuffyError>
@@ -145,13 +145,13 @@ function Content() {
 
                     <div>
                         <ul className="text-[--muted] flex flex-wrap gap-4">
-                            <li>Downloading: {data?.filter(t => t.status === "downloading" || t.status === "paused")?.length ?? 0}</li>
-                            <li>Seeding: {data?.filter(t => t.status === "seeding")?.length ?? 0}</li>
+                            <li>Downloading: {data?.filter((t: Debrid_TorrentItem) => t.status === "downloading" || t.status === "paused")?.length ?? 0}</li>
+                            <li>Seeding: {data?.filter((t: Debrid_TorrentItem) => t.status === "seeding")?.length ?? 0}</li>
                         </ul>
                     </div>
 
                     <Card className="p-0 overflow-hidden">
-                        {data?.filter(Boolean)?.map(torrent => {
+                        {data?.filter(Boolean)?.map((torrent: Debrid_TorrentItem) => {
                             return <TorrentItem
                                 key={torrent.id}
                                 torrent={torrent}
@@ -186,7 +186,7 @@ type DownloadProgress = {
 
 const TorrentItem = React.memo(function TorrentItem({ torrent, isPending }: TorrentItemProps) {
 
-    const { mutate: deleteTorrent, isPending: isDeleting } = useDebridDeleteTorrent()
+    const { mutate: deleteTorrent, isPending: isDeleting } = useDebridDeleteStream()
 
     const { mutate: cancelDownload, isPending: isCancelling } = useDebridCancelDownload()
 
@@ -226,10 +226,10 @@ const TorrentItem = React.memo(function TorrentItem({ torrent, isPending }: Torr
     return (
         <div
             data-torrent-item-container className={cn(
-            "hover:bg-gray-900 hover:bg-opacity-70 px-4 py-3 relative flex gap-4 group/torrent-item",
-            torrent.status === "paused" && "bg-gray-900 hover:bg-gray-900",
-            torrent.status === "downloading" && "bg-green-900 bg-opacity-20 hover:hover:bg-opacity-30 hover:bg-green-900",
-        )}
+                "hover:bg-gray-900 hover:bg-opacity-70 px-4 py-3 relative flex gap-4 group/torrent-item",
+                torrent.status === "paused" && "bg-gray-900 hover:bg-gray-900",
+                torrent.status === "downloading" && "bg-green-900 bg-opacity-20 hover:hover:bg-opacity-30 hover:bg-green-900",
+            )}
         >
             <div className="w-full">
                 <div
@@ -337,7 +337,7 @@ function TorrentItemModal(props: TorrentItemModalProps) {
     const serverStatus = useServerStatus()
 
     const [selectedTorrentItem, setSelectedTorrentItem] = useAtom(selectedTorrentItemAtom)
-    const { mutate: downloadTorrent, isPending: isDownloading } = useDebridDownloadTorrent()
+    const { mutate: downloadTorrent, isPending: isDownloading } = useDebridDownloadStream()
 
     const [destination, setDestination] = React.useState("")
 
