@@ -130,14 +130,14 @@ export function ScannerModal() {
                             label="Skip locked files"
                             value={skipLockedFiles.active}
                             onValueChange={v => skipLockedFiles.set(v as boolean)}
-                            // size="lg"
+                        // size="lg"
                         />
                         <Switch
                             side="right"
                             label="Skip ignored files"
                             value={skipIgnoredFiles.active}
                             onValueChange={v => skipIgnoredFiles.set(v as boolean)}
-                            // size="lg"
+                        // size="lg"
                         />
 
                         <Separator />
@@ -168,10 +168,10 @@ export function ScannerModal() {
                                 onValueChange={v => enhanceWithOfflineDatabase.set(v === "database")}
                                 help={enhanceWithOfflineDatabase.active
                                     ? <span>Matches local files against the entire AniList catalog. Scanning will be slower.</span>
-                                    : <span><span className="text-[--orange]">Slower for large libraries</span>. Seanime will send an API request for
-                                                                                                               each anime title found in the library,
-                                                                                                               which may lead to rate limits and
-                                                                                                               slower scanning.</span>}
+                                    : <span><span className="text-[--orange]">Slower for large libraries</span>. Kōtei will send an API request for
+                                        each anime title found in the library,
+                                        which may lead to rate limits and
+                                        slower scanning.</span>}
                             />}
                         </AppLayoutStack>
 

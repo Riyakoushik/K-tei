@@ -1,0 +1,28 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="brand-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8a2be2" />
+      <stop offset="100%" stop-color="#00ced1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
+      <feOffset dx="1" dy="1" result="offsetblur" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.5" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Main "K" Shape with sleek curves and a "Play" motif -->
+  <path d="M25 20V80M25 50L65 20M65 80L35 55" stroke="url(#brand-gradient)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" filter="url(#shadow)" />
+  
+  <!-- Play Button Accent -->
+  <path d="M75 50L60 40V60L75 50Z" fill="url(#brand-gradient)" />
+  
+  <!-- Stylized Stream Line -->
+  <path d="M20 90C40 85 60 95 80 90" stroke="url(#brand-gradient)" stroke-width="4" stroke-linecap="round" opacity="0.6" />
+</svg>

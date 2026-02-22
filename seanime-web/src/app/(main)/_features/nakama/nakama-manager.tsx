@@ -305,7 +305,7 @@ export function NakamaManager() {
 
     const confirmRoom = useConfirmationDialog({
         title: "Create a Cloud Room",
-        description: "By continuing, you agree to broadcast your playback state through Seanime's servers to sync with peers while the room is active. You are limited to 10 rooms per day and 4 peers per room (subject to change).",
+        description: "By continuing, you agree to broadcast your playback state through Kōtei's servers to sync with peers while the room is active. You are limited to 10 rooms per day and 4 peers per room (subject to change).",
         onConfirm: () => {
             handleCreateRoom()
         },
@@ -325,7 +325,7 @@ export function NakamaManager() {
                 ts.enableBlurringEffects && "bg-gray-950 bg-opacity-90 backdrop-blur-sm firefox:bg-opacity-100 firefox:backdrop-blur-none",
             )}
             overlayClass={cn(ts.enableBlurringEffects ? "bg-gray-950/70 backdrop-blur-sm" : "bg-black/80")}
-            // allowOutsideInteraction
+        // allowOutsideInteraction
         >
 
             <GlowingEffect
@@ -449,35 +449,35 @@ export function NakamaManager() {
                                     </div>
                                 )
                                 : nakamaStatus?.connectionMode === "direct" && roomsAvailable && (!nakamaStatus?.currentWatchPartySession || (nakamaStatus.currentWatchPartySession && nakamaStatus.currentWatchPartySession?.isRoom)) && (
-                                <div className="space-y-2">
-                                    <div className="p-4 border rounded-lg bg-gray-950">
-                                        <div className="flex items-center justify-between">
-                                            <div className="space-y-1">
-                                                <p className="font-bold">
-                                                    Cloud Room
-                                                </p>
-                                                <p className="text-sm text-[--muted] pr-4">
-                                                    Cloud Rooms use Seanime's API to enable hosting watch parties without exposing your server to the
-                                                    internet.
-                                                </p>
-                                            </div>
-                                            <Tooltip
-                                                trigger={<Button
-                                                    onClick={confirmRoom.open}
-                                                    disabled={isCreatingRoom}
-                                                    size="sm"
-                                                    intent="white-glass"
-                                                    leftIcon={<TbCloudPlus className="text-2xl" />}
+                                    <div className="space-y-2">
+                                        <div className="p-4 border rounded-lg bg-gray-950">
+                                            <div className="flex items-center justify-between">
+                                                <div className="space-y-1">
+                                                    <p className="font-bold">
+                                                        Cloud Room
+                                                    </p>
+                                                    <p className="text-sm text-[--muted] pr-4">
+                                                        Cloud Rooms use Kōtei's API to enable hosting watch parties without exposing your server to the
+                                                        internet.
+                                                    </p>
+                                                </div>
+                                                <Tooltip
+                                                    trigger={<Button
+                                                        onClick={confirmRoom.open}
+                                                        disabled={isCreatingRoom}
+                                                        size="sm"
+                                                        intent="white-glass"
+                                                        leftIcon={<TbCloudPlus className="text-2xl" />}
+                                                    >
+                                                        {isCreatingRoom ? "Creating..." : "Create a Cloud Room"}
+                                                    </Button>}
                                                 >
-                                                    {isCreatingRoom ? "Creating..." : "Create a Cloud Room"}
-                                                </Button>}
-                                            >
-                                                You will automatically join the room.
-                                            </Tooltip>
+                                                    You will automatically join the room.
+                                                </Tooltip>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            )}
+                                )}
 
                             {nakamaStatus.connectionMode === "direct" && <>
                                 <h4>Direct connections ({nakamaStatus?.connectedPeers?.length ?? 0})</h4>
@@ -740,7 +740,7 @@ function WatchPartySessionView({ session, isHost, onLeave, isLeaving, isRoom }: 
                         disabled={isLeaving}
                         size="sm"
                         intent="alert-basic"
-                        // leftIcon={isHost ? <MdStop /> : <MdExitToApp />}
+                    // leftIcon={isHost ? <MdStop /> : <MdExitToApp />}
                     >
                         {isLeaving ? "Leaving..." : isHost ? "Stop" : "Leave"}
                     </Button>

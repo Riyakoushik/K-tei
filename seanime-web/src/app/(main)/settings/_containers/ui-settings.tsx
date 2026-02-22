@@ -202,7 +202,7 @@ export function UISettings() {
 
     function handleSave(data: z.infer<typeof themeSchema>) {
         if (colord(data.backgroundColor).isLight()) {
-            toast.error("Seanime does not support light themes")
+            toast.error("Kōtei does not support light themes")
             return
         }
 

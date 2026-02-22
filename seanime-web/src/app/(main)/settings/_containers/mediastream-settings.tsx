@@ -77,14 +77,14 @@ export function MediastreamSettings(props: MediastreamSettingsProps) {
                 onSubmit={data => {
                     if (settings) {
                         mutate({
-                                settings: {
-                                    ...settings,
-                                    ...data,
-                                    preTranscodeLibraryDir: "",
-                                    preTranscodeEnabled: false,
-                                    transcodeThreads: 0,
-                                },
+                            settings: {
+                                ...settings,
+                                ...data,
+                                preTranscodeLibraryDir: "",
+                                preTranscodeEnabled: false,
+                                transcodeThreads: 0,
                             },
+                        },
                             {
                                 onSuccess: () => {
                                     formRef.current?.reset(formRef.current.getValues())
@@ -157,7 +157,7 @@ export function MediastreamSettings(props: MediastreamSettingsProps) {
                                 side="right"
                                 name="disableAutoSwitchToDirectPlay"
                                 label="Prefer transcoding"
-                                help="If enabled, Seanime will not automatically switch to direct play if the media codec is supported by the client."
+                                help="If enabled, Kōtei will not automatically switch to direct play if the media codec is supported by the client."
                             />
 
                             <Field.Switch

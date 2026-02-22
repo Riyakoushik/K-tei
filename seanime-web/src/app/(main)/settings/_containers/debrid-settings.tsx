@@ -134,7 +134,7 @@ export function DebridSettings(props: DebridSettingsProps) {
                                 side="right"
                                 name="streamAutoSelect"
                                 label="Enable"
-                                help="Let Seanime find the best file automatically, based on cache and resolution."
+                                help="Let Kōtei find the best file automatically, based on cache and resolution."
                             />
 
                             {/*{f.watch("streamAutoSelect") && f.watch("provider") === "torbox" && (*/}
@@ -150,7 +150,7 @@ export function DebridSettings(props: DebridSettingsProps) {
                             <Field.Select
                                 name="streamPreferredResolution"
                                 label="Preferred resolution"
-                                help="If auto-select is enabled, Seanime will try to find torrents with this resolution."
+                                help="If auto-select is enabled, Kōtei will try to find torrents with this resolution."
                                 options={[
                                     { label: "Highest", value: "-" },
                                     { label: "480p", value: "480" },

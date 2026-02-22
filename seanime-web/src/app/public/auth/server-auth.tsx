@@ -13,9 +13,9 @@ export function ServerAuth() {
     return (<>
         <Modal
             title="Password required"
-            description="This Seanime server requires authentication."
+            description="This Kōtei server requires authentication."
             open={true}
-            onOpenChange={(v) => {}}
+            onOpenChange={(v) => { }}
             overlayClass="bg-opacity-100 bg-gray-900"
             contentClass="border focus:outline-none focus-visible:outline-none outline-none"
             hideCloseButton

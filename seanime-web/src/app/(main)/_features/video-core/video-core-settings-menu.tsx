@@ -318,11 +318,11 @@ export function VideoCoreSettingsMenu() {
             {playbackRate !== 1 && (
                 <p
                     className="text-sm text-[--muted] cursor-pointer" onClick={() => {
-                    setMenuOpen("settings")
-                    React.startTransition(() => {
-                        setOpenMenuSection("Playback Speed")
-                    })
-                }}
+                        setMenuOpen("settings")
+                        React.startTransition(() => {
+                            setOpenMenuSection("Playback Speed")
+                        })
+                    }}
                 >
                     {`${(playbackRate).toFixed(2)}x`}
                 </p>
@@ -366,7 +366,7 @@ export function VideoCoreSettingsMenu() {
                 <VideoCoreMenuSubmenuBody>
                     <VideoCoreMenuOption title="Subtitle Styles" icon={MdOutlineSubtitles}>
                         <p className="text-sm text-[--muted] mb-2">Subtitle customization will not override ASS/SSA tracks that contain multiple
-                                                                   styles.</p>
+                            styles.</p>
                         <VideoCoreSettingSelect
                             options={[
                                 { label: "On", value: 1 },
@@ -383,8 +383,8 @@ export function VideoCoreSettingsMenu() {
                                 parentId="Subtitle Styles"
                                 value={!editedSubCustomization.fontName ? "Default" : editedSubCustomization.fontName?.slice(0,
                                     11) + (!!editedSubCustomization.fontName?.length && editedSubCustomization.fontName?.length > 10
-                                    ? "..."
-                                    : "")}
+                                        ? "..."
+                                        : "")}
                             />
                             <VideoCoreMenuSubOption
                                 title="Font Size"
@@ -594,11 +594,11 @@ export function VideoCoreSettingsMenu() {
                             <p className="text-sm mb-2">Custom Font</p>
                             <p className="text-sm text-[--muted] mb-2">
                                 Place the font file in the <span
-                                className="text-indigo-300 cursor-pointer underline underline-offset-2"
-                                onClick={() => {
-                                    openInExplorer({ path: upath.normalize(`${serverStatus?.dataDir}/assets`) })
-                                }}
-                            >Seanime assets directory</span>. The file name must match
+                                    className="text-indigo-300 cursor-pointer underline underline-offset-2"
+                                    onClick={() => {
+                                        openInExplorer({ path: upath.normalize(`${serverStatus?.dataDir}/assets`) })
+                                    }}
+                                >Kōtei assets directory</span>. The file name must match
                                 the font name exactly.
                             </p>
                             <div className="space-y-2">
@@ -611,8 +611,8 @@ export function VideoCoreSettingsMenu() {
                                 <div className="flex w-full">
                                     <Button
                                         size="sm" intent="gray-glass" onClick={() => {
-                                        handleSubtitleCustomizationChange("fontName", subFontName)
-                                    }}
+                                            handleSubtitleCustomizationChange("fontName", subFontName)
+                                        }}
                                     >
                                         Save
                                     </Button>

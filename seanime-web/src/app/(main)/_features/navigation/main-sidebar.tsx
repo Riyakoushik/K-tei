@@ -309,7 +309,7 @@ function SidebarNavigation({ isCollapsed, containerRef }: { isCollapsed: boolean
                 )}
             >
                 <img
-                    src="/seanime-logo.png"
+                    src="/K-tei.svg"
                     alt="logo"
                     className="w-15 h-10 transition-all duration-300"
                 />

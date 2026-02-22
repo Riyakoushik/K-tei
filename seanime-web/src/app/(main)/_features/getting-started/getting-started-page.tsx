@@ -126,8 +126,8 @@ function StepIndicator({ currentStep, totalSteps, onStepClick }: { currentStep: 
             <div className="flex items-center justify-center mb-6">
                 <div className="relative mx-auto size-16">
                     <motion.img
-                        src="/seanime-logo.png"
-                        alt="Seanime Logo"
+                        src="/K-tei.svg"
+                        alt="Kōtei Logo"
                         className="w-full h-full object-contain"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -252,7 +252,7 @@ function LibraryStep({ form }: { form: any }) {
             <motion.div variants={itemVariants} className="text-center space-y-4">
                 <h2 className="text-3xl font-bold">Anime Library</h2>
                 <p className="text-[--muted] text-sm max-w-lg mx-auto">
-                    Choose the folder where your anime files are stored. This is where Seanime will scan for your collection.
+                    Choose the folder where your anime files are stored. This is where Kōtei will scan for your collection.
                 </p>
             </motion.div>
 
@@ -288,7 +288,7 @@ function PlayerStep({ form, status }: { form: any, status: Status }) {
             <motion.div variants={itemVariants} className="text-center space-y-4">
 
                 {__isElectronDesktop__ && <div className="max-w-3xl mx-auto p-4 rounded-xl border !mb-8 font-medium">
-                    Seanime Denshi includes a built-in media player that is enabled by default. You can still configure an external media player.
+                    Kōtei Denshi includes a built-in media player that is enabled by default. You can still configure an external media player.
                 </div>}
 
                 <h2 className="text-3xl font-bold">{__isDesktop__ ? "External " : ""}Media Player</h2>
@@ -361,12 +361,12 @@ function PlayerStep({ form, status }: { form: any, status: Status }) {
 
                                 <Alert
                                     intent="info-basic"
-                                    description={<p>For IINA to work correctly with Seanime, make sure <strong>Quit after all windows are
-                                                                                                               closed</strong> is <span
-                                        className="underline"
-                                    >checked</span> and <strong>Keep window open after playback
-                                                                finishes</strong> is <span className="underline">unchecked</span> in
-                                                    your IINA general settings.</p>}
+                                    description={<p>For IINA to work correctly with Kōtei, make sure <strong>Quit after all windows are
+                                        closed</strong> is <span
+                                            className="underline"
+                                        >checked</span> and <strong>Keep window open after playback
+                                            finishes</strong> is <span className="underline">unchecked</span> in
+                                        your IINA general settings.</p>}
                                 />
                             </motion.div>
                         )}
@@ -839,7 +839,7 @@ export function GettingStartedPage({ status }: { status: Status }) {
                                         loading={isPending}
                                         rightIcon={<BiRocket className="size-6" />}
                                     >
-                                        <span>Launch Seanime</span>
+                                        <span>Launch Kōtei</span>
                                     </Button>
                                 ) : (
                                     <Button

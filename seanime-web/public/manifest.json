@@ -1,6 +1,6 @@
 {
-  "name": "Seanime",
-  "short_name": "Seanime",
+  "name": "Kōtei",
+  "short_name": "Kōtei",
   "description": "Self-hosted, user-friendly media server for anime and manga.",
   "start_url": "/",
   "display": "standalone",

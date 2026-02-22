@@ -90,10 +90,10 @@ export function UnknownMediaManager(props: UnknownMediaManagerProps) {
             <AppLayoutStack className="mt-4">
 
                 <p className="">
-                    Seanime matched {unknownGroups.length} group{unknownGroups.length === 1 ? "" : "s"} to {unknownGroups.length === 1 ? "a " : ""}series
+                    Kōtei matched {unknownGroups.length} group{unknownGroups.length === 1 ? "" : "s"} to {unknownGroups.length === 1 ? "a " : ""}series
                     that {unknownGroups.length === 1
-                    ? "is"
-                    : "are"} absent from your
+                        ? "is"
+                        : "are"} absent from your
                     {!hasCustomSources ? "AniList" : ""} collection.<br />
                     Add the media to be able to see entries in your library or unmatch them if incorrect.
                 </p>
@@ -158,7 +158,7 @@ export function UnknownMediaManager(props: UnknownMediaManagerProps) {
                                                 className="p-2 text-[--muted] line-clamp-2 tracking-wide select-text even:bg-gray-800"
                                             >
                                                 <span>{upath.dirname(lf.path)}/</span><span className="text-[--foreground]">{lf.parsedInfo?.original || upath.basename(
-                                                lf.path)}</span>
+                                                    lf.path)}</span>
                                             </p>
                                         })}
                                 </div>
